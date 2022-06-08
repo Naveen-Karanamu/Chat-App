@@ -25,5 +25,6 @@ app.get("/",(_,res)=>res.send(`Server is Onn and running ${version} 🔥`))
 
 httpServer.listen(port,host,()=>{
     logger.info(`Server version ${version} is listning 🚀`);
+    logger.info(`http://${host}:${port}`);
     
 })
