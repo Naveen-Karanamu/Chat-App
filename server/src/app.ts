@@ -21,9 +21,9 @@ const io=new Server(httpServer,{
     },
 })
 
-app.get("/",(_,res)=>res.send("Server is Onn 🔥"))
+app.get("/",(_,res)=>res.send(`Server is Onn and running ${version} 🔥`))
 
 httpServer.listen(port,host,()=>{
-    logger.info("Server is listning 🚀");
+    logger.info(`Server version ${version} is listning 🚀`);
     
 })
