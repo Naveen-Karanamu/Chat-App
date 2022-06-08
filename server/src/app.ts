@@ -3,6 +3,8 @@ import { createServer } from 'http'
 import { Server } from 'socket.io'
 import cors from 'cors'
 import config from 'config'
+import logger from "./utils/logger"
+import {version} from "../package.json"
 
 const port = config.get<number>("port");
 const host = config.get<string>("host");
@@ -19,9 +21,9 @@ const io=new Server(httpServer,{
     },
 })
 
-app.get("/",(_,res)=>res.send("Server is Onn 🚀"))
+app.get("/",(_,res)=>res.send("Server is Onn 🔥"))
 
 httpServer.listen(port,host,()=>{
-    console.log("Server is listning 🔥");
+    logger.info("Server is listning 🚀");
     
 })
