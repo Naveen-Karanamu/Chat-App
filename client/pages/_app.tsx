@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import SocketsProvider from "../context/socket.context";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <SocketsProvider>
+      <Component {...pageProps} />
+    </SocketsProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
