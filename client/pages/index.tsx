@@ -1,5 +1,3 @@
-import Head from "../node_modules/next/head";
-import Image from "../node_modules/next/image";
 import styles from "../styles/Home.module.css";
 import { useSockets } from "../context/socket.context";
 import RoomsContainer from "../containers/Rooms";
