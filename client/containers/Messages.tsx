@@ -24,7 +24,7 @@ const MessagesContainer = () => {
         username: "You",
         message,
         time: `${date.getHours()}:${date.getMinutes()}`,
-      },
+      }, 
     ]);
 
     newMessageRef.current.value = "";
