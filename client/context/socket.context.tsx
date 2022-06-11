@@ -39,15 +39,21 @@ const SocketsProvider = (props: any) => {
       setRoomId(value)
   })
 
-  useEffect(() => {
-    socket.on(EVENTS.SERVER.ROOM_MESSAGE, ({ message, username, time }) => {
-      if (!document.hasFocus()) {
-        document.title = "New message...";
-      }
+//   useEffect(() => {
+//     socket.on(EVENTS.SERVER.ROOM_MESSAGE, ({ message, username, time }) => {
+//       if (!document.hasFocus()) {
+//         document.title = "New message...";
+//       }
 
-      setMessages((messages) => [...messages, { message, username, time }]);
-    });
-  }, [socket]);
+//       setMessages((messages) => [...messages, { message, username, time }]);
+//     });
+//   }, [socket]);
+
+socket.on(EVENTS.SERVER.ROOM_MESSAGE,({message,userName,time})=>{
+    setMessages([
+        ...messages,{message,userName,time}
+    ])
+})
 
   return (
     <SocketContext.Provider

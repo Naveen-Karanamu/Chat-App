@@ -9,7 +9,7 @@ const RoomsContainer = () => {
   function handleCreateRooom() {
     //Get room name
     const roomName = newRoomRef.current?.value || "";
-    if(!String(roomName).trim()) return ;
+    if (!String(roomName).trim()) return;
 
     // emit room created event
     socket.emit(EVENTS.CLIENT.CREATE_ROOM, { roomName });
@@ -18,17 +18,33 @@ const RoomsContainer = () => {
     newRoomRef.current.value = "";
   }
 
-  return (
-      <nav>
-        <div>
-          <input placeholder="Room Name" ref={newRoomRef}/>
-          <button onClick={handleCreateRooom}>CREATE ROOM</button>
-        </div>
+  function handleJoinRoom(key) {
+    if (key === roomId) return;
 
-        {/* {Object.keys(rooms).map((key)=>{
-            return <div key={key}>{rooms[key].name}</div>
-        })} */}
-      </nav> 
+    socket.emit(EVENTS.CLIENT.JOIN_ROOM, key);
+  }
+
+  return (
+    <nav>
+      <div>
+        <input placeholder="Room Name" ref={newRoomRef} />
+        <button onClick={handleCreateRooom}>CREATE ROOM</button>
+      </div>
+
+      {Object.keys(rooms).map((key) => {
+        return (
+          <div key={key}>
+            <button
+              disabled={key === roomId}
+              title={`Join ${rooms[key].name}`}
+              onClick={() => handleJoinRoom(key)}
+            >
+              {rooms[key].name}
+            </button>
+          </div>
+        );
+      })}
+    </nav>
   );
 };
 

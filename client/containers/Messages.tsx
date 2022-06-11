@@ -14,14 +14,14 @@ const MessagesContainer = () => {
       return;
     }
 
-    socket.emit(EVENTS.CLIENT.SEND_ROOM_MESSAGE, { roomId, message, userName, setMessages });
+    socket.emit(EVENTS.CLIENT.SEND_ROOM_MESSAGE, { roomId, message, userName });
 
     const date = new Date();
 
     setMessages([
       ...messages,
       {
-        username: "You",
+        userName: "You",
         message,
         time: `${date.getHours()}:${date.getMinutes()}`,
       }, 
@@ -50,3 +50,5 @@ const MessagesContainer = () => {
 };
 
 export default MessagesContainer;
+
+
