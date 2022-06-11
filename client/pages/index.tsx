@@ -2,7 +2,7 @@ import styles from "../styles/Home.module.css";
 import { useSockets } from "../context/socket.context";
 import RoomsContainer from "../containers/Rooms";
 import MessagesContainer from "../containers/Messages";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   const { socket, userName, setUserName } = useSockets();
@@ -18,6 +18,8 @@ export default function Home() {
 
     localStorage.setItem("userName", value);
   }
+
+ 
 
   return (
     <div>
