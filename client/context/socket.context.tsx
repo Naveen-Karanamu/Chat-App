@@ -38,11 +38,11 @@ const SocketsProvider = (props: any) => {
   socket.on(EVENTS.SERVER.ROOMS, (value) => {
     setRooms(value);
 
-    setMessages([])
   });
- 
+  
   socket.on(EVENTS.SERVER.JOINED_ROOM,(value)=>{
-      setRoomId(value)
+    setRoomId(value)
+    setMessages([])
   })
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const SocketsProvider = (props: any) => {
 
   return (
     <SocketContext.Provider
-      value={{ socket, userName, setUserName, rooms, roomId, messages }}
+      value={{ socket, userName, setUserName, rooms, roomId, messages,setMessages }}
       {...props}
     />
   );
